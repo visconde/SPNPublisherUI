@@ -1,0 +1,69 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false;
+    app.settings.asideDock = false;
+  "
+  ng-controller="TemperatureCtrl as tempCtrl"
+  >
+  <!-- main -->
+  <div class="col">
+    <!-- main header -->
+    <div class="bg-light lter b-b wrapper-md">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h1 class="m-n font-thin h3 text-black">Temperature Sensor</h1>
+          <small class="text-muted">Sensor</small>
+        </div>
+
+      </div>
+    </div>
+    <!-- / main header -->
+
+      <!-- / service -->
+
+      <!-- tasks -->
+      <div class="panel wrapper">
+        <div class="row">
+
+          <div class="col-md-12">
+            <div class="row row-sm">
+              <div class="col-xs-3  vertical-">
+<div class="chart" data-percent="73">73%</div>
+              </div>
+              <div class="col-xs-6 text-center">
+                <div ui-jq="easyPieChart"  ui-options="{
+                    percent:   {{currentPercentage}} ,
+                    lineWidth: 4,
+                    trackColor: '{{app.color.light}}',
+                    barColor: '{{app.color.primary}}',
+                    scaleColor: false,
+                    size: 300,
+                    rotate: 90,
+                    lineCap: 'butt'
+                  }" class="inline m-t">
+                  <div>
+                    <span class="text-primary h2">{{currentTemperature}}º - {{currentPercentage}}%</span>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-xs-3 text-center ">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+<div class="col-xs-3 text-right" >    <button class="btn btn-primary btn-addon btn-lg fa fa-minus" ng-click="decreaseTemperature();" ></button></div>
+<div class="col-xs-6"></div>
+<div class="col-xs-3">    <button class="btn btn-primary btn-addon btn-lg fa fa-plus"  ng-click="increaseTemperature();"></button></div>
+        </div>
+      </div>
+      <!-- / tasks -->
+
+      <!-- tasks -->
+
+      <!-- / streamline -->
+    </div>
+  </div>
+  <!-- / right col -->
+</div>
