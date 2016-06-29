@@ -27,21 +27,21 @@
           <div class="col-md-12">
             <div class="row row-sm">
               <div class="col-xs-3  vertical-">
-<div class="chart" data-percent="73">73%</div>
               </div>
               <div class="col-xs-6 text-center">
-                <div ui-jq="easyPieChart"  ui-options="{
-                    percent:   {{currentPercentage}} ,
+                <div ui-jq="easyPieChart" ui-refresh="currentPercentage" ui-options="{
+                    percent:   '{{currentPercentage}}' ,
+                    animate:1000,
                     lineWidth: 4,
-                    trackColor: '{{app.color.light}}',
-                    barColor: '{{app.color.primary}}',
+                    trackColor: '{{app.color.danger}}',
+                    barColor: '{{tempColor}}',
                     scaleColor: false,
                     size: 300,
                     rotate: 90,
                     lineCap: 'butt'
                   }" class="inline m-t">
                   <div>
-                    <span class="text-primary h2">{{currentTemperature}}º - {{currentPercentage}}%</span>
+                    <span class="text-info h2">{{currentTemperature}}º</span>
                   </div>
                 </div>
 
@@ -53,9 +53,9 @@
           </div>
         </div>
         <div class="row">
-<div class="col-xs-3 text-right" >    <button class="btn btn-primary btn-addon btn-lg fa fa-minus" ng-click="decreaseTemperature();" ></button></div>
+<div class="col-xs-3 text-right" >    <button class="btn btn-info btn-lg fa fa-minus" ng-click="decreaseTemperature();" ></button></div>
 <div class="col-xs-6"></div>
-<div class="col-xs-3">    <button class="btn btn-primary btn-addon btn-lg fa fa-plus"  ng-click="increaseTemperature();"></button></div>
+<div class="col-xs-3">    <button class="btn btn-info  btn-lg fa fa-plus"  ng-click="increaseTemperature();"></button></div>
         </div>
       </div>
       <!-- / tasks -->

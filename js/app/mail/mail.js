@@ -10,7 +10,7 @@ app.controller('MailCtrl', ['$scope', function($scope) {
 
   $scope.labels = [
     {name: 'Angular', filter:'angular', color:'#23b7e5'},
-    {name: 'Bootstrap', filter:'bootstrap', color:'#7266ba'},
+    {name: 'Bootstrap', filter:'bootstrap', color:'#15b0a6ff'},
     {name: 'Client', filter:'client', color:'#fad733'},
     {name: 'Work', filter:'work', color:'#27c24c'}
   ];

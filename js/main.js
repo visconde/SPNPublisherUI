@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('app')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window',
     function(              $scope,   $translate,   $localStorage,   $window ) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
@@ -12,11 +12,11 @@ angular.module('app')
 
       // config
       $scope.app = {
-        name: 'XX运营平台',
+        name: 'SPN',
         version: '1.3.3',
         // for chart colors
         color: {
-          primary: '#7266ba',
+          primary: '#15b0a6ff',
           info:    '#23b7e5',
           success: '#27c24c',
           warning: '#fad733',
