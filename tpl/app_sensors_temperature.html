@@ -7,7 +7,7 @@
   <!-- main -->
   <div class="col">
     <!-- main header -->
-    <div class="bg-light lter b-b wrapper-md">
+    <div class=" b-b wrapper-md">
       <div class="row">
         <div class="col-sm-6 col-xs-12">
           <h1 class="m-n font-thin h3 text-black">Temperature Sensor</h1>
@@ -21,9 +21,9 @@
       <!-- / service -->
 
       <!-- tasks -->
-      <div class="panel wrapper">
+      <div class=" panel wrapper">
         <div class="row">
-
+<span class="glyphicon glyphicon-dashboard bg-fade"></span>
           <div class="col-md-12">
             <div class="row row-sm">
               <div class="col-xs-3  vertical-">
@@ -32,16 +32,16 @@
                 <div ui-jq="easyPieChart" ui-refresh="currentPercentage" ui-options="{
                     percent:   '{{currentPercentage}}' ,
                     animate:1000,
-                    lineWidth: 4,
-                    trackColor: '{{app.color.danger}}',
-                    barColor: '{{tempColor}}',
+                    lineWidth: 10,
+                    trackColor: '{{app.color.info}}',
+                    barColor: '{{app.color.danger}}',
                     scaleColor: false,
                     size: 300,
                     rotate: 90,
-                    lineCap: 'butt'
+                    lineCap: 'round'
                   }" class="inline m-t">
                   <div>
-                    <span class="text-info h2">{{currentTemperature}}º</span>
+                    <span class="h2" ng-class="{'text-danger':currentPercentage>=80,'text-info':currentPercentage<80}">{{currentTemperature}}º</span>
                   </div>
                 </div>
 
@@ -57,6 +57,7 @@
 <div class="col-xs-6"></div>
 <div class="col-xs-3">    <button class="btn btn-info  btn-lg fa fa-plus"  ng-click="increaseTemperature();"></button></div>
         </div>
+        <div></div>
       </div>
       <!-- / tasks -->
 

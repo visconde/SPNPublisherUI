@@ -1,7 +1,7 @@
 <!-- list -->
 <ul class="nav">
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-    <span translate="aside.nav.HEADER">Navigation</span>
+    <span>&nbsp;</span>
   </li>
   <li>
     <a href class="auto">
@@ -20,13 +20,20 @@
       </li>
       <li ui-sref-active="active">
         <a ui-sref="app.temperature">
+            <i class=" icon-fire  text-danger"></i>
           <span>Temperature</span>
         </a>
       </li>
       <li ui-sref-active="active">
         <a ui-sref="app.dashboard-v1">
-          <b class="label bg-info pull-right">N</b>
+          <i class=" icon-drop  text-primary"></i>
           <span>Humidity</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.dashboard-v1">
+          <i class=" icon-energy  text-warning"></i>
+          <span>Power</span>
         </a>
       </li>
     </ul>
