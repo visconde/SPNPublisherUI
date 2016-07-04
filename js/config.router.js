@@ -17,7 +17,7 @@ angular.module('app')
       function ($stateProvider,   $urlRouterProvider) {
 
           $urlRouterProvider
-              .otherwise('/app/dashboard-v1');
+              .otherwise('/app/sensors-temperature');
           $stateProvider
               .state('app', {
                   abstract: true,
@@ -25,6 +25,8 @@ angular.module('app')
                   templateUrl: 'tpl/app.html'
               })
 
+     
+          
               .state('app.dashboard-v1', {
                 url: '/dashboard-v1',
                 templateUrl: 'tpl/app_dashboard_v1.html',

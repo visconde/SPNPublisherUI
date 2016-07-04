@@ -1,44 +1,64 @@
-app.factory('SensorsService', ['$http', '$timeout',  function($http, $timeout) {
+app.factory('SensorsService', ['$http', '$timeout','$q' , function ($http, $timeout,$q) {
 
-      function Instance() {
+    function Instance() {
 
         var vm = this;
-        var SPN_URL = "http://localhost:8080/";
-        var PUBLISH_TEMPERATURE_URL = "/PublishTemperature";
+        var SPN_URL = "http://192.168.2.108:8080/SPNDemo";
+        var PUBLISH_TEMPERATURE_URL = "/Temperature";
         vm.publishTemperature = publishTemperature;
         vm.getTemperature = getTemperature;
+        vm.currentTemperature = 10;
 
         init();
 
         function init() {;
-          console.log("Init app sensors service");
+            console.log("Init app sensors service");
         }
 
         function publishTemperature(temperature) {
-          var temperatureObject = {};
-          temperatureObject.temperature = temperature;
+            var temperatureObject = {};
+            temperatureObject.temperature = temperature;
 
-          $http.post(SPN_URL + PUBLISH_TEMPERATURE_URL, temperatureObject)
-            .then(function(resp) {
+            $http.post(SPN_URL + PUBLISH_TEMPERATURE_URL, temperatureObject)
+                .then(function (resp) {
 
-              console.log("Response Received!");
-              console.log(resp);
+                    console.log("POST Response Received!");
 
-            }, function(resp) {
+                    console.log(resp);
 
-              console.log("Error!");
-              console.log(resp);
+                }, function (resp) {
 
-            });
+                    console.log("Error!");
+                    console.log(resp);
+
+                });
         }
 
         function getTemperature() {
-          return 10;
+            var q = $q.defer();
+
+            $http.get(SPN_URL + PUBLISH_TEMPERATURE_URL)
+                .then(function (resp) {
+                    vm.currentTemperature = resp.data.temperature;
+
+
+                    console.log("GET Reponse - new temp:" + vm.currentTemperature)
+
+                    console.log(resp.data);
+                    q.resolve(resp.data.temperature);
+
+                }, function (resp) {
+                    console.log("Error!");
+                    console.log(resp);
+                    q.reject(resp)
+
+                });
+            return q.promise;
         }
 
-      }
+    }
 
-      return {
+    return {
         Instance: Instance
-      }
+    }
   }]);

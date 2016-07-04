@@ -1,38 +1,38 @@
 <div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
     app.settings.asideFolded = false;
     app.settings.asideDock = false;
-  "
-  ng-controller="TemperatureCtrl as tempCtrl"
-  >
-  <!-- main -->
-  <div class="col">
-    <!-- main header -->
-    <div class=" b-b wrapper-md">
-      <div class="row">
-        <div class="col-sm-6 col-xs-12">
-          <h1 class="m-n font-thin h3 text-black">Temperature Sensor</h1>
-          <small class="text-muted">Sensor</small>
+  " ng-controller="TemperatureCtrl as tempCtrl">
+
+
+    <!-- main -->
+    <div class="col">
+        <div class="row">&nbsp;</div>
+        <!-- main header -->
+        <div class=" b-b wrapper-md">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h1 class="m-n font-thin h3 text-black">Temperature Sensor</h1>
+                    <small class="text-muted">Sensor</small>
+                </div>
+
+            </div>
         </div>
+        <!-- / main header -->
 
-      </div>
-    </div>
-    <!-- / main header -->
+        <!-- / service -->
 
-      <!-- / service -->
-
-      <!-- tasks -->
-      <div class=" panel wrapper">
-        <div class="row">
-<span class="glyphicon glyphicon-dashboard bg-fade"></span>
-          <div class="col-md-12">
-            <div class="row row-sm">
-              <div class="col-xs-3  vertical-">
-              </div>
-              <div class="col-xs-6 text-center">
-                <div ui-jq="easyPieChart" ui-refresh="currentPercentage" ui-options="{
+        <!-- tasks -->
+        <div class=" panel wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row row-sm">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-6 col-md-12 text-center">
+                            <div ui-jq="easyPieChart" ui-refresh="currentPercentage" ui-options="{
                     percent:   '{{currentPercentage}}' ,
                     animate:1000,
-                    lineWidth: 10,
+                    lineWidth: 20,
                     trackColor: '{{app.color.info}}',
                     barColor: '{{app.color.danger}}',
                     scaleColor: false,
@@ -40,31 +40,45 @@
                     rotate: 90,
                     lineCap: 'round'
                   }" class="inline m-t">
-                  <div>
-                    <span class="h2" ng-class="{'text-danger':currentPercentage>=80,'text-info':currentPercentage<80}">{{currentTemperature}}º</span>
-                  </div>
+                                <div>
+                                    <span class="h2" ng-class="{'text-danger':currentTemperature>=dangerTemperature,'text-info':currentTemperature<dangerTemperature}">{{currentTemperature}}º</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3 text-center ">
+
+                        </div>
+                    </div>
                 </div>
-
-              </div>
-              <div class="col-xs-3 text-center ">
-
-              </div>
             </div>
-          </div>
+            <div class="row">
+                <div class="col-xs-3 text-right">
+                    <button class="btn btn-info btn-lg fa fa-minus" ng-disabled="currentTemperature<=0" ng-click="decreaseTemperature();"></button>
+                </div>
+                <div class="col-xs-6 text-center">
+                    <div style="padding-top:15px;">
+                        Current Status 
+                        <span class="label" ng-class="{'bg-danger':currentTemperature>=dangerTemperature,'bg-success':currentTemperature<dangerTemperature}" >
+                            <span ng-show="currentTemperature<dangerTemperature">OK</span>
+                           <span ng-show="currentTemperature>=dangerTemperature ">CRITICAL</span>
+                        </span> </div>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn btn-danger  btn-lg fa fa-plus" ng-disabled="currentTemperature>=maxTemperature" ng-click="increaseTemperature();"></button>
+                </div>
+            </div>
+            <div></div>
         </div>
-        <div class="row">
-<div class="col-xs-3 text-right" >    <button class="btn btn-info btn-lg fa fa-minus" ng-click="decreaseTemperature();" ></button></div>
-<div class="col-xs-6"></div>
-<div class="col-xs-3">    <button class="btn btn-info  btn-lg fa fa-plus"  ng-click="increaseTemperature();"></button></div>
-        </div>
-        <div></div>
-      </div>
-      <!-- / tasks -->
+        
+     
+        
+        <!-- / tasks -->
 
-      <!-- tasks -->
+        <!-- tasks -->
 
-      <!-- / streamline -->
+        <!-- / streamline -->
     </div>
-  </div>
-  <!-- / right col -->
+</div>
+<!-- / right col -->
 </div>
